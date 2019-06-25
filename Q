@@ -1,0 +1,82 @@
+//남은우님 소스 참고...& 공부
+
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+struct data { // linked list
+	int value;
+	int test;
+	struct data* next;
+};
+void RemoveSp(struct data** start) {
+	struct data* del = *start;
+	*start = (*start)->next;		
+	free(del);					
+}
+
+void MoveLast(struct data** start, struct data** end) {
+	(*end)->next = *start;		
+	*start = (*start)->next;	
+	*end = (*end)->next;			
+	(*end)->next = NULL;			
+}
+
+int TestDaTa(struct data* testdata) {
+	int test = 0;
+	int testValue = testdata->value;
+	while (testdata != NULL) {
+		if (testValue < testdata->value)
+			return 1;
+		testdata = testdata->next;
+	}
+	return 0;
+}
+void main(void) {
+
+	int allCount, setNum, timeValue = 0;
+
+	printf("입력 \n");
+	scanf("%d %d", &allCount, &setNum);
+
+
+	struct data* start = malloc(sizeof(struct data) * 1); 
+	struct data* end = start;		
+
+	for (int c = 0; c < allCount; c++) {
+		int iValue;
+		scanf("%d", &iValue);
+		end->value = iValue;
+
+		if (c == setNum) {
+			end->test = 1;		
+		}
+		else {
+			end->test = 0;
+		}
+		if (c + 1 == allCount) {
+			end->next = NULL;
+		}
+		else {
+			end->next = malloc(sizeof(struct data) * 1);
+			end = end->next;
+		}
+	}
+
+
+	while (1) {
+		if (TestDaTa(start) == 1) {		
+			MoveLast(&start, &end);	
+		}
+		else {							
+			timeValue++;			
+			if (start->test == 1) {		
+				break;
+			}
+			else {
+				RemoveSp(&start);	
+			}
+		}
+	}
+	printf("\n출력 \n");
+	printf("%d\n", timeValue);
+}
