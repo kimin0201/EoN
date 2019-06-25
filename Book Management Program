@@ -1,0 +1,261 @@
+//실행되지않음ㅠㅠ
+//추가.검색.수정.삭제.총도서목록출력까지
+
+#include <stdio.h>
+
+
+char compare(char* s1, char* s2)
+{
+	while (*s1)
+	{
+		if (*s1 != *s2)
+		{
+			return 0;
+		}
+		s1++;
+		s2++;
+	}
+	if (*s2 == '\0') 
+		return 1;
+	}
+
+}
+
+
+
+
+typedef struct book {
+
+
+	char* book[15];
+	char* auth[15];
+	int* year[15];
+	char* publ[15];
+	char* genr[15];
+
+
+} Book;
+
+void Search()
+{
+
+	int k;
+	int user_input;
+	int i;
+	char user_search;
+
+	prinf("=====검색키워드=======\n");
+	prinf("1.도서명으로 검색\n");
+	prinf("2.저자으로 검색\n");
+	prinf("3.출판연도로 검색\n");
+	prinf("4.출판사명으로 검색\n");
+	prinf("5.장르로 검색\n");
+	scanf("%d", &user_input);
+
+	printf("검색할단어를 입력하세요 \n");
+	scanf("%s", user_search);
+
+	Book b[100];
+
+	if (user_input == 1) //도서명으로 비교
+	{
+
+
+		for (i = 0; i <= k; i++)
+			if (compare(b[i].book[i], user_search))
+			{
+				printf("도서명:&s 저자:%s 출판연도:&d 출판사명:&s 장르:&s",
+					b[i].book[i], b[i].auth[i], b[i].year[i], b[i].publ[i], b[i].genr[i]);
+				break;
+			}
+		if (i == k)
+		{
+			printf("찾으시는 책이 없습니다. \n\n");
+		}
+	}
+
+
+	else if (user_input == 2) //저자로 비교
+	{
+		for (i = 0; i <= k; i++)
+			if (compare(b[i].auth[i], user_search))
+			{
+				printf(" 도서명:&s 저자:%s 출판연도:&d 출판사명:&s 장르:&s",
+					b[i].book[i], b[i].auth[i], b[i].year[i], b[i].publ[i], b[i].genr[i]);
+				break;
+			};
+
+		if (i == k)
+		{
+			printf("찾으시는 책이 없습니다. \n\n");
+		}
+	}
+	else if (user_input == 3)
+	{
+		for (i = 0; i <= k; i++)
+
+			if (compare(b[i].year[i], user_search))
+			{
+				printf("도서명:&s 저자:%s 출판연도:&d 출판사명:&s 장르:&s"
+					, b[i].book[i], b[i].auth[i], b[i].year[i], b[i].publ[i], b[i].genr[i]);
+
+				break;
+			};
+		if (i == k)
+		{
+			printf("찾으시는 책이 없습니다. \n\n");
+		}
+
+	}
+	else if (user_input == 4)
+	{
+		for (i = 0; i <= k; i++)
+			if (compare(b[i].publ[i], user_search))
+			{
+				printf("도서명:&s 저자:%s 출판연도:&d 출판사명:&s 장르:&s"
+					, b[i].book[i], b[i].auth[i], b[i].year[i], b[i].publ[i], b[i].genr[i]);
+				break;
+			};
+		if (i == k)
+		{
+			printf("찾으시는 책이 없습니다. \n\n");
+		}
+	}
+
+	else if (user_input == 5)
+	{
+		for (i = 0; i <= k; i++)
+			if (compare(b[i].genr[i], user_search))
+			{
+				printf(" 도서명:&s 저자:%s 출판사명:&s 장르:&s",
+					b[i].book[i], b[i].auth[i], b[i].publ[i], b[i].genr[i]);
+
+				break;
+			};
+		if (i == k)
+		{
+			printf("찾으시는 책이 없습니다. \n\n");
+		}
+	}
+
+}
+
+
+
+int main(void)
+{
+
+	int user_input;
+	char user_search;
+	static int k;
+	Book arr[100];   //배열개수는 저장된 book구조체의 갯슈
+	int i;
+
+
+
+
+	while (1)
+	{
+
+		printf("도서관리 프로그램\n\n");
+		printf("1.책 새로 추가하기\n"); //구조체로..?
+		printf("2.책 검색하기\n"); //함수로
+		printf("3.도서 정보 수정 \n"); //도서정보수정...함수?구조체? 구조체를 수정하는 함수?
+		printf("4.도서 삭제\n"); //도서 빌리기..?ㅇㅇ 빼내는거
+		printf("5.총 도서 목록 출력\n"); //스택 전체 배열 보이기..그거
+		printf("6.저장\n");
+		printf("번호를 선택하세요: \n");
+		scanf("%d", &user_input);
+
+
+		if (user_input == 1)// 도서 추가 구조체 사용
+		{
+			for (i = 0; i <= k; i++)
+			{
+				print("도서명 저자 출판연도 출판사명 장르\n");
+				scanf("%s %s %d %s %s \n", arr[i].book, arr[i].auth, arr[i].year, arr[i].publ, arr[i].genr);
+
+
+			}
+
+		}
+
+
+		else if (user_input == 2) //도서를 검색하는 함수 
+		{
+			Search;
+
+
+
+		}
+
+		else if (user_input == 3) //도서 정보를 수정
+		{
+			printf("수정하실 도서의 이름을 입력해주세요");
+			scanf("%s", &user_search);
+
+
+
+			for (i = 0; i <= k; i++)
+			{
+				if (compare(arr[i].book[i], user_search))
+				{
+					printf(" 도서명:&s 저자:%s 출판연도:&d 출판사명:&s 장르:&s",
+						arr[i].book[i], arr[i].auth[i], arr[i].year[i], arr[i].publ[i], arr[i].genr[i]);
+
+					printf("새로 수정할 도서의 정보를 입력하세요");
+					scanf("%s %s %d %s %s", arr[i].book[i], arr[i].auth[i], arr[i].year[i], arr[i].publ[i], arr[i].genr[i]);
+					printf("수정완료\n\n");
+				}
+
+
+				if (i == k)
+				{
+					printf("찾으시는 책이 없습니다. \n\n");
+				}
+			}
+		}
+
+
+
+		else if (user_input == 4) //도서 삭제
+		{
+
+
+			printf("삭제할 도서이름을 입력해 주세용 : ");
+			scanf("%s", &user_search);
+
+			for (i = 0; i <= k; i++)
+			{
+				if (compare(arr[i].book[i], user_search))
+				{
+					printf("%d 도서명:&s 저자:%s 출판연도:&d 출판사명:&s 장르:&s\n",
+						i, arr[i].book[i], arr[i].auth[i], arr[i].year[i], arr[i].publ[i], arr[i].genr[i]);
+					printf("를 삭제합니다\n");
+					for (i = 0; i < k; i++)
+					{
+						arr[i].book[i] = 0;
+						arr[i].auth[i] = 0;
+						arr[i].year[i] = 0;
+						arr[i].publ[i] = 0;
+						arr[i].genr[i] = 0;
+
+						printf("삭제 했습니다.\n\n");
+					}
+				}
+			}
+
+		}
+
+
+
+		else if (user_input == 5) //총 도서 목록 출력 
+		{
+			for (i = 0; i <= k; i++)
+			{
+				printf("[%s %s %d %s %s \n]", arr[i].book, arr[i].auth, arr[i].year, arr[i].publ, arr[i].genr);
+			}
+
+		}
+	}
+}
