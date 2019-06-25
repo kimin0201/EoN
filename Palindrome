@@ -1,0 +1,45 @@
+
+#include <stdio.h>
+
+
+void Palindrome() { //회문 판별 함수
+	int count, i, result;
+	char aa[101];
+	count = 0;
+
+	printf("문자열 입력 : (최대 100자)\n");
+	gets(aa);
+
+	
+	count = strlen(aa);
+
+	for (i = 0; i < count; i++)
+	{
+		if (aa[i] != aa[count - i - 1]) //
+			break;
+	}
+
+	if (count == i)
+
+		printf("회문입니다\n ");
+
+	else
+
+		printf("회문이 아닙니다\n");
+}
+
+int main()
+{
+
+	while (1)
+	{
+		Palindrome();
+	}
+
+	return 0;
+}
+
+
+
+
+
