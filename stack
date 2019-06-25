@@ -1,0 +1,92 @@
+
+struct Stack {
+
+	int sstack[10];
+	int index; //
+
+
+
+};
+
+
+void Push(struct Stack* pStack);
+void Pop(struct Stack* pStack);
+void Show(struct Stack* pStack);
+
+
+
+int main(void)
+{
+
+
+	int icount = 1;
+	struct Stack s = { 0,0 };
+
+
+	printf("===== 메뉴 =====\n");
+	printf("PUSH 1\n");
+	printf("POP 2\n");
+	printf("SHOW 3\n");
+	printf("(종료 하려면 1,2,3 이외의 수 입력)\n\n");
+
+	while (icount == 1 || icount == 2 || icount == 3)
+	{
+
+		printf("메뉴를 선택하세요 : ");
+
+		scanf("%d", &icount);
+
+
+		switch (icount)
+		{
+		case 1:
+			if (s.index < 10)
+			{
+				Push(&s);
+			}
+			else {
+				printf("데이터 값 초과");
+			}
+			break;
+
+		case 2:
+			Pop(&s);
+			break;
+		case 3:
+			Show(&s);
+			break;
+		default:
+			printf("========= 스택 프로그램을 종료합니다 ==========\n");
+
+		}
+	}
+}
+
+
+void Push(struct Stack* pStack)
+{
+	int ivalue;
+	printf("수입력 : ");
+	scanf_s("%d", &ivalue);
+	pStack->sstack[pStack->index] = ivalue;
+	pStack->index++;
+}
+
+void Pop(struct Stack* pStack)
+{
+	pStack->index--;
+	pStack->sstack[pStack->index] = 0;
+
+		
+}
+
+void Show(struct Stack* pStack)
+{
+
+	for (int i = 0; i <= 9; i++)
+	{
+		if (pStack->sstack[i] != 0)
+			printf("%d ", pStack->sstack[i]);
+	}
+	printf("\n");
+}
